@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function promiseFunction(){
+            const promise = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    let x = undefined;
+                    if(x !== undefined)
+                        resolve(x);
+                    else
+                        reject(new Error("Data not found"));
+                }, 2000);
+            });
+            return promise;
+        }
+    
+        function promiseDemo(){
+            const data = promiseFunction(); // Corrected: call promiseFunction
+            data
+            .then((msg) => {
+                document.write(msg+"<br>");
+            })
+            .catch((err) => {
+                document.write(err.stack+"<br>");
+            })
+            .finally(() => {
+                document.write("<br>this is final block<br>");
+            });
+            document.write("inside function after promise");
+        }
+        
+        promiseDemo(); // Corrected: call promiseDemo
+    
+
+    </script>
+</body>
+</html>
